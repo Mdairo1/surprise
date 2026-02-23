@@ -3,178 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>For Kiekie ❤️</title>
 
 <style>
-    body {
-        margin:0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg,#ff758c,#ff7eb3);
-        color:white;
-        overflow-x:hidden;
-        text-align:center;
-    }
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff5f9e,#ffc3a0);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
 
-    h1 {
-        font-size:3rem;
-        margin-top:60px;
-        animation: fadeIn 2s ease;
-    }
+/* ---------- INTRO SCREEN ---------- */
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+background:#111;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:10;
+}
 
-    p {
-        font-size:1.2rem;
-        max-width:700px;
-        margin:auto;
-        padding:10px;
-    }
+input{
+padding:12px;
+border-radius:20px;
+border:none;
+text-align:center;
+}
 
-    button {
-        padding:15px 25px;
-        border:none;
-        border-radius:30px;
-        font-size:1rem;
-        margin:10px;
-        cursor:pointer;
-        background:white;
-        color:#ff4f81;
-        font-weight:bold;
-        transition:.3s;
-    }
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4f81;
+font-weight:bold;
+margin:10px;
+cursor:pointer;
+transition:.3s;
+}
 
-    button:hover {
-        transform:scale(1.1);
-    }
+button:hover{
+transform:scale(1.1);
+}
 
-    .card {
-        background:rgba(255,255,255,0.15);
-        backdrop-filter: blur(10px);
-        border-radius:20px;
-        padding:20px;
-        margin:20px auto;
-        width:90%;
-        max-width:600px;
-        display:none;
-        animation: fadeIn 1s ease;
-    }
+section{
+padding:60px 20px;
+animation:fadeIn 1.5s ease;
+}
 
-    @keyframes fadeIn {
-        from {opacity:0; transform:translateY(20px);}
-        to {opacity:1; transform:translateY(0);}
-    }
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:20px;
+margin:20px auto;
+max-width:700px;
+}
 
-    .heart {
-        position:fixed;
-        color:white;
-        font-size:20px;
-        animation: floatUp 4s linear forwards;
-    }
+.gallery img{
+width:200px;
+height:200px;
+object-fit:cover;
+border-radius:20px;
+margin:10px;
+transition:.4s;
+}
 
-    @keyframes floatUp {
-        from {
-            transform:translateY(0);
-            opacity:1;
-        }
-        to {
-            transform:translateY(-800px);
-            opacity:0;
-        }
-    }
+.gallery img:hover{
+transform:scale(1.1);
+}
 
-    footer{
-        margin:40px 0;
-        opacity:.8;
-    }
+.heart{
+position:fixed;
+animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+from{transform:translateY(0);opacity:1;}
+to{transform:translateY(-800px);opacity:0;}
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+font-size:3rem;
+}
+
+footer{
+opacity:.8;
+margin:40px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>❤️ For My Beautiful Girlfriend ❤️</h1>
+<!-- SECRET INTRO -->
+<div id="intro">
+<h2>❤️ A Special Place ❤️</h2>
+<p>Enter our special word</p>
+<input id="password" placeholder="Type here...">
+<button onclick="enterSite()">Enter</button>
+<p id="error"></p>
+</div>
 
+<!-- MAIN CONTENT -->
+<div id="main" style="display:none;">
+
+<section>
+<h1>For My Partner, Kiekie ❤️</h1>
+<p id="typing"></p>
+<button onclick="createHearts()">Send Love ❤️</button>
+</section>
+
+<section class="card">
+<h2>💌 My Message</h2>
 <p>
-This little website is just a reminder that you are special,
-loved, and one of the best things that ever happened to me.
+Kiekie, you are not just my partner — you are my peace,
+my happiness, and one of the greatest blessings in my life.
+Every moment with you feels meaningful, and every day
+I thank God that our paths crossed.
 </p>
+</section>
 
-<button onclick="showMessage()">💌 Open Love Message</button>
-<button onclick="nextNote()">✨ Surprise Me</button>
-<button onclick="toggleMusic()">🎵 Music</button>
+<section class="card">
+<h2>⏳ Our Time Together</h2>
+<p id="counter"></p>
+</section>
 
-<div class="card" id="messageCard">
-    <h2>My Message To You</h2>
-    <p>
-        Every day with you feels like a blessing.
-        Your smile brings peace to my heart,
-        and your presence makes life brighter.
-        I appreciate you more than words can explain.
-    </p>
+<section class="card">
+<h2>📖 Our Story</h2>
+<p>✨ The day we met — destiny started writing our story.</p>
+<p>💬 The first deep conversation — I knew you were different.</p>
+<p>❤️ Today — still choosing you every day.</p>
+</section>
+
+<section class="card">
+<h2>📸 Memories</h2>
+
+<div class="gallery">
+<!-- Replace images with yours -->
+<img src="https://picsum.photos/300?1">
+<img src="https://picsum.photos/300?2">
+<img src="https://picsum.photos/300?3">
 </div>
 
-<div class="card" id="noteCard">
-    <h2 id="noteTitle">A Little Note</h2>
-    <p id="noteText"></p>
-</div>
+<p>(You can replace these with your real photos)</p>
+</section>
+
+<section class="card">
+<h2>✨ Reasons I Love You</h2>
+<button onclick="nextReason()">Reveal One</button>
+<p id="reason"></p>
+</section>
 
 <footer>
-Made with ❤️ just for you
+Made with ❤️ only for Kiekie
 </footer>
 
-<audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112189.mp3">
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112189.mp3">
 </audio>
+
+</div>
 
 <script>
 
-const notes = [
-"You're the reason I smile randomly.",
-"Life feels softer and happier with you in it.",
-"I thank God for bringing you into my life.",
-"You are beautiful inside and out.",
-"No matter what happens, I choose you.",
-"You make ordinary moments feel magical.",
-"I admire your heart and your strength.",
-"My favorite place is wherever you are."
+/* PASSWORD */
+function enterSite(){
+let pass=document.getElementById("password").value.toLowerCase();
+if(pass==="love"){
+document.getElementById("intro").style.display="none";
+document.getElementById("main").style.display="block";
+startTyping();
+document.getElementById("music").play();
+}else{
+document.getElementById("error").innerText="Wrong word ❤️";
+}
+}
+
+/* TYPING EFFECT */
+const text="Kiekie, this little space on the internet exists just to remind you how deeply you are loved.";
+let i=0;
+
+function startTyping(){
+let speed=40;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,speed);
+}
+}
+type();
+}
+
+/* HEARTS */
+function createHearts(){
+for(let i=0;i<20;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),4000);
+}
+}
+
+/* REASONS */
+const reasons=[
+"Your kindness makes everything better.",
+"You understand me in ways nobody else does.",
+"You bring calm to my chaos.",
+"Your smile changes my whole day.",
+"You are my safe place.",
+"I admire your strength and heart."
 ];
 
-let noteIndex = 0;
+let r=0;
 
-function showMessage(){
-    document.getElementById("messageCard").style.display="block";
-    createHearts();
+function nextReason(){
+document.getElementById("reason").innerText=reasons[r];
+r=(r+1)%reasons.length;
+createHearts();
 }
 
-function nextNote(){
-    const card = document.getElementById("noteCard");
-    const text = document.getElementById("noteText");
+/* COUNTDOWN (change date to when relationship started) */
+const startDate=new Date("2024-01-01");
 
-    text.innerText = notes[noteIndex];
-    card.style.display="block";
+function updateCounter(){
+let now=new Date();
+let diff=now-startDate;
 
-    noteIndex = (noteIndex + 1) % notes.length;
-    createHearts();
+let days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("counter").innerText=
+"We have shared "+days+" beautiful days together ❤️";
 }
 
-function toggleMusic(){
-    const music = document.getElementById("bgMusic");
-    if(music.paused){
-        music.play();
-    } else {
-        music.pause();
-    }
-}
-
-function createHearts(){
-    for(let i=0;i<15;i++){
-        let heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(Math.random()*20+10)+"px";
-        document.body.appendChild(heart);
-
-        setTimeout(()=>heart.remove(),4000);
-    }
-}
+setInterval(updateCounter,1000);
+updateCounter();
 
 </script>
 
