@@ -5,204 +5,238 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Always & Forever — Kiekie ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
 <style>
 body{
-  margin:0;
-  font-family:Poppins,sans-serif;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#0b0b1a;
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-h1{
-  font-family:"Great Vibes",cursive;
-  font-size:3rem;
-  margin-top:40px;
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
 }
 
 section{
-  padding:50px 20px;
-}
-
-button{
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  background:#ff4d6d;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-button:hover{
-  transform:scale(1.1);
+padding:60px 20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  padding:25px;
-  max-width:700px;
-  margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:25px;
+max-width:750px;
+margin:auto;
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:#ff4f81;
+color:white;
+margin:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+input{
+padding:10px;
+border-radius:20px;
+border:none;
+text-align:center;
 }
 
 .gallery img{
-  width:100%;
-  border-radius:15px;
-  transition:.4s;
+width:200px;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+margin:10px;
+transition:.4s;
 }
 
 .gallery img:hover{
-  transform:scale(1.05);
+transform:scale(1.08);
 }
 
-.hidden{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-
-.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-footer{
-  padding:30px;
-  opacity:.7;
-}
-
-/* floating hearts */
 .heart{
-  position:fixed;
-  bottom:-10px;
-  font-size:20px;
-  animation:floatUp 6s linear infinite;
+position:fixed;
+animation:float 4s linear forwards;
 }
 
-@keyframes floatUp{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(-110vh);opacity:0;}
+@keyframes float{
+to{transform:translateY(-800px);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<h1>Always & Forever 💖</h1>
-<p>For my partner, <strong>Kiekie</strong></p>
+<canvas id="stars"></canvas>
 
-<section class="hidden">
-<div class="card">
-<h2>Our Beginning ✨</h2>
-<p>
-The day you said yes changed everything for me.
-</p>
-
-<h3>❤️ 27 / 12 / 2025 ❤️</h3>
-
-<p id="daysTogether"></p>
+<!-- PASSWORD -->
+<div id="intro" style="position:fixed;width:100%;height:100%;background:black;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<h2>✨ Our Private Universe ✨</h2>
+<p>Enter our forever code</p>
+<input id="pass">
+<button onclick="enter()">Enter</button>
+<p id="err"></p>
 </div>
+
+<div id="main" style="display:none;">
+
+<section>
+<h1>Always & Forever — Kiekie ❤️</h1>
+<p id="typing"></p>
 </section>
 
-<section class="hidden">
-<div class="card">
-<h2>A Message For You 💌</h2>
-<p>
-Kiekie, you are not just my partner — you are my peace,
-my answered prayers, and my forever person.
-Every day with you feels like purpose.
-This little space on the internet exists only to remind you:
-I choose you. Always. Forever.
-</p>
-
-<button onclick="showLove()">Click for a surprise ❤️</button>
-<p id="loveMessage"></p>
-</div>
+<section class="card">
+<h2>⏳ Since The First Time We Met</h2>
+<p id="timeTogether"></p>
 </section>
 
-<section class="hidden">
-<div class="card">
-<h2>Our Memories 📸</h2>
+<section class="card">
+<h2>💌 A Message For You</h2>
+<p>
+Kiekie, you are not just my girlfriend — you are my partner.  
+Even in this pause we are in right now, my heart still chooses you.
+I can't wait for the day we recommit to each other,
+grow stronger, and finally spend forever together.
+</p>
+</section>
 
+<section class="card">
+<h2>📸 Our Memories</h2>
 <div class="gallery">
-<!-- Replace image names after uploading to GitHub -->
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
-</div>
-
-<p style="margin-top:15px;">Every memory with you is my favorite.</p>
-
+<img src="images/photo1.jpg">
+<img src="images/photo2.jpg">
+<img src="images/photo3.jpg">
+<img src="images/photo4.jpg">
+<img src="images/photo5.jpg">
 </div>
 </section>
 
-<footer>
-Made with ❤️ — AlwaysAndForever
+<section class="card">
+<h2>🔐 Unlock More Love</h2>
+<p>When was the first time you said yes to me?</p>
+<input id="answer" placeholder="DD/MM/YYYY">
+<br>
+<button onclick="unlock()">Unlock ❤️</button>
+<p id="unlockMsg"></p>
+</section>
+
+<section id="hiddenLove" class="card" style="display:none;">
+<h2>✨ Forever Mode Unlocked</h2>
+<p>
+No matter where life takes us,
+I still look forward to choosing you again.
+I can't wait for us to rebuild,
+recommit,
+and write the forever story that belongs to us.
+</p>
+
+<button onclick="hearts()">Send Love ❤️</button>
+</section>
+
+<footer style="padding:30px;">
+Made only for Kiekie ❤️
 </footer>
+
+</div>
 
 <script>
 
-/* Days together counter */
-const startDate = new Date("2025-12-27");
-
-function updateDays(){
-  const today = new Date();
-  const diff = today - startDate;
-  const days = Math.floor(diff/(1000*60*60*24));
-
-  document.getElementById("daysTogether").innerText =
-    days >= 0
-    ? `We have been together for ${days} days ❤️`
-    : "Counting down to the day you officially said yes ❤️";
+/* PASSWORD */
+function enter(){
+if(document.getElementById("pass").value.toLowerCase()==="alwaysandforever"){
+intro.style.display="none";
+main.style.display="block";
+typing();
+}else{
+err.innerText="Not our forever code ❤️";
+}
 }
 
-updateDays();
+/* TYPING MESSAGE */
+const message="From the moment we met, something about us felt different — like a story still being written.";
+let i=0;
 
-/* Reveal animations */
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
+function typing(){
+(function type(){
+if(i<message.length){
+document.getElementById("typing").innerHTML+=message.charAt(i);
+i++;
+setTimeout(type,40);
+}
+})();
+}
+
+/* DAYS COUNTER (20 Dec 2025) */
+const start=new Date("2025-12-20");
+
+setInterval(()=>{
+let now=new Date();
+let days=Math.floor((now-start)/(1000*60*60*24));
+document.getElementById("timeTogether").innerText=
+days+" days since the first time we met.";
+},1000);
+
+/* UNLOCK QUESTION */
+/* CHANGE ANSWER BELOW TO REAL DATE SHE SAID YES */
+const correctAnswer="CHANGE_THIS_DATE";
+
+function unlock(){
+let ans=document.getElementById("answer").value.trim();
+if(ans===correctAnswer){
+document.getElementById("hiddenLove").style.display="block";
+unlockMsg.innerText="You remembered ❤️";
+hearts();
+}else{
+unlockMsg.innerText="Try again ❤️";
+}
+}
+
+/* HEARTS */
+function hearts(){
+for(let i=0;i<15;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+}
+}
+
+/* STARS */
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<120;i++){
+stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
 });
-
-document.querySelectorAll(".hidden").forEach(el=>{
-  observer.observe(el);
-});
-
-/* Surprise message */
-function showLove(){
-  document.getElementById("loveMessage").innerHTML =
-  "No matter where life takes us, my heart will always find its way back to you ❤️";
+requestAnimationFrame(draw);
 }
-
-/* Floating hearts animation */
-function createHeart(){
-  const heart=document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(Math.random()*3+3)+"s";
-  document.body.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),6000);
-}
-
-setInterval(createHeart,500);
+draw();
 
 </script>
 
