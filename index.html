@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+    body {
+        margin:0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg,#ff758c,#ff7eb3);
+        color:white;
+        overflow-x:hidden;
+        text-align:center;
+    }
+
+    h1 {
+        font-size:3rem;
+        margin-top:60px;
+        animation: fadeIn 2s ease;
+    }
+
+    p {
+        font-size:1.2rem;
+        max-width:700px;
+        margin:auto;
+        padding:10px;
+    }
+
+    button {
+        padding:15px 25px;
+        border:none;
+        border-radius:30px;
+        font-size:1rem;
+        margin:10px;
+        cursor:pointer;
+        background:white;
+        color:#ff4f81;
+        font-weight:bold;
+        transition:.3s;
+    }
+
+    button:hover {
+        transform:scale(1.1);
+    }
+
+    .card {
+        background:rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        border-radius:20px;
+        padding:20px;
+        margin:20px auto;
+        width:90%;
+        max-width:600px;
+        display:none;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity:0; transform:translateY(20px);}
+        to {opacity:1; transform:translateY(0);}
+    }
+
+    .heart {
+        position:fixed;
+        color:white;
+        font-size:20px;
+        animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform:translateY(0);
+            opacity:1;
+        }
+        to {
+            transform:translateY(-800px);
+            opacity:0;
+        }
+    }
+
+    footer{
+        margin:40px 0;
+        opacity:.8;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>❤️ For My Beautiful Girlfriend ❤️</h1>
+
+<p>
+This little website is just a reminder that you are special,
+loved, and one of the best things that ever happened to me.
+</p>
+
+<button onclick="showMessage()">💌 Open Love Message</button>
+<button onclick="nextNote()">✨ Surprise Me</button>
+<button onclick="toggleMusic()">🎵 Music</button>
+
+<div class="card" id="messageCard">
+    <h2>My Message To You</h2>
+    <p>
+        Every day with you feels like a blessing.
+        Your smile brings peace to my heart,
+        and your presence makes life brighter.
+        I appreciate you more than words can explain.
+    </p>
+</div>
+
+<div class="card" id="noteCard">
+    <h2 id="noteTitle">A Little Note</h2>
+    <p id="noteText"></p>
+</div>
+
+<footer>
+Made with ❤️ just for you
+</footer>
+
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112189.mp3">
+</audio>
+
+<script>
+
+const notes = [
+"You're the reason I smile randomly.",
+"Life feels softer and happier with you in it.",
+"I thank God for bringing you into my life.",
+"You are beautiful inside and out.",
+"No matter what happens, I choose you.",
+"You make ordinary moments feel magical.",
+"I admire your heart and your strength.",
+"My favorite place is wherever you are."
+];
+
+let noteIndex = 0;
+
+function showMessage(){
+    document.getElementById("messageCard").style.display="block";
+    createHearts();
+}
+
+function nextNote(){
+    const card = document.getElementById("noteCard");
+    const text = document.getElementById("noteText");
+
+    text.innerText = notes[noteIndex];
+    card.style.display="block";
+
+    noteIndex = (noteIndex + 1) % notes.length;
+    createHearts();
+}
+
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+    if(music.paused){
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+function createHearts(){
+    for(let i=0;i<15;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(Math.random()*20+10)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),4000);
+    }
+}
+
+</script>
+
+</body>
+</html>
