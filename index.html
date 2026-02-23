@@ -3,34 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Kiekie ❤️</title>
+<title>Always & Forever ❤️</title>
 
 <style>
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#ff5f9e,#ffc3a0);
+background:#0b0b1a;
 color:white;
 text-align:center;
 overflow-x:hidden;
 }
 
-/* ---------- INTRO SCREEN ---------- */
+/* STAR BACKGROUND */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* INTRO */
 #intro{
 position:fixed;
 width:100%;
 height:100%;
-background:#111;
+background:black;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:10;
 }
 
 input{
 padding:12px;
-border-radius:20px;
+border-radius:25px;
 border:none;
 text-align:center;
 }
@@ -39,38 +46,55 @@ button{
 padding:12px 22px;
 border:none;
 border-radius:25px;
-background:white;
-color:#ff4f81;
-font-weight:bold;
+background:#ff4f81;
+color:white;
 margin:10px;
 cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.1);
+font-weight:bold;
 }
 
 section{
 padding:60px 20px;
-animation:fadeIn 1.5s ease;
+animation:fade 1.5s ease;
 }
 
 .card{
-background:rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.08);
 backdrop-filter:blur(10px);
 border-radius:20px;
 padding:20px;
-margin:20px auto;
+margin:auto;
 max-width:700px;
 }
 
+.chat{
+text-align:left;
+max-width:500px;
+margin:auto;
+}
+
+.msg{
+padding:10px 15px;
+margin:10px;
+border-radius:15px;
+width:fit-content;
+}
+
+.me{
+background:#ff4f81;
+margin-left:auto;
+}
+
+.her{
+background:#333;
+}
+
 .gallery img{
-width:200px;
-height:200px;
-object-fit:cover;
+width:180px;
+height:180px;
 border-radius:20px;
 margin:10px;
+object-fit:cover;
 transition:.4s;
 }
 
@@ -78,96 +102,80 @@ transition:.4s;
 transform:scale(1.1);
 }
 
-.heart{
-position:fixed;
-animation:floatUp 4s linear forwards;
-}
-
-@keyframes floatUp{
-from{transform:translateY(0);opacity:1;}
-to{transform:translateY(-800px);opacity:0;}
-}
-
-@keyframes fadeIn{
+@keyframes fade{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-h1{
-font-size:3rem;
+.heart{
+position:fixed;
+animation:float 4s linear forwards;
 }
 
-footer{
-opacity:.8;
-margin:40px;
+@keyframes float{
+to{transform:translateY(-800px);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- SECRET INTRO -->
+<canvas id="stars"></canvas>
+
+<!-- INTRO -->
 <div id="intro">
-<h2>❤️ A Special Place ❤️</h2>
-<p>Enter our special word</p>
-<input id="password" placeholder="Type here...">
-<button onclick="enterSite()">Enter</button>
-<p id="error"></p>
+<h2>✨ A Private Universe ✨</h2>
+<p>Enter our forever code</p>
+<input id="pass">
+<button onclick="enter()">Enter</button>
+<p id="err"></p>
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="main" style="display:none;">
 
 <section>
-<h1>For My Partner, Kiekie ❤️</h1>
+<h1>Always & Forever — Kiekie ❤️</h1>
 <p id="typing"></p>
-<button onclick="createHearts()">Send Love ❤️</button>
+<button onclick="hearts()">Send Love ❤️</button>
 </section>
 
 <section class="card">
-<h2>💌 My Message</h2>
-<p>
-Kiekie, you are not just my partner — you are my peace,
-my happiness, and one of the greatest blessings in my life.
-Every moment with you feels meaningful, and every day
-I thank God that our paths crossed.
+<h2>💬 Our Conversations</h2>
+<div class="chat" id="chat"></div>
+<button onclick="nextChat()">Continue Chat</button>
+</section>
+
+<section class="card">
+<h2>💌 Unlock Love Letter</h2>
+<button onclick="showLetter()">Open Letter</button>
+<p id="letter" style="display:none;">
+Kiekie, being your partner is one of the greatest gifts life has given me.
+Through every moment — calm or chaotic — I choose you.
+Not just today, not just tomorrow, but always and forever.
 </p>
 </section>
 
 <section class="card">
-<h2>⏳ Our Time Together</h2>
-<p id="counter"></p>
-</section>
-
-<section class="card">
-<h2>📖 Our Story</h2>
-<p>✨ The day we met — destiny started writing our story.</p>
-<p>💬 The first deep conversation — I knew you were different.</p>
-<p>❤️ Today — still choosing you every day.</p>
+<h2>⏳ Our Journey</h2>
+<p id="timeTogether"></p>
 </section>
 
 <section class="card">
 <h2>📸 Memories</h2>
-
 <div class="gallery">
-<!-- Replace images with yours -->
 <img src="https://picsum.photos/300?1">
 <img src="https://picsum.photos/300?2">
 <img src="https://picsum.photos/300?3">
 </div>
-
-<p>(You can replace these with your real photos)</p>
 </section>
 
 <section class="card">
-<h2>✨ Reasons I Love You</h2>
-<button onclick="nextReason()">Reveal One</button>
-<p id="reason"></p>
+<h2>💍 Forever Promise</h2>
+<button onclick="promise()">Click Me</button>
+<p id="promiseText"></p>
 </section>
 
-<footer>
-Made with ❤️ only for Kiekie
-</footer>
+<footer>Made only for Kiekie ❤️</footer>
 
 <audio id="music" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112189.mp3">
@@ -178,79 +186,115 @@ Made with ❤️ only for Kiekie
 <script>
 
 /* PASSWORD */
-function enterSite(){
-let pass=document.getElementById("password").value.toLowerCase();
-if(pass==="love"){
+function enter(){
+if(document.getElementById("pass").value.toLowerCase()==="alwaysandforever"){
 document.getElementById("intro").style.display="none";
 document.getElementById("main").style.display="block";
-startTyping();
+typing();
 document.getElementById("music").play();
 }else{
-document.getElementById("error").innerText="Wrong word ❤️";
+document.getElementById("err").innerText="Not our forever code ❤️";
 }
 }
 
-/* TYPING EFFECT */
-const text="Kiekie, this little space on the internet exists just to remind you how deeply you are loved.";
+/* TYPING */
+const message="Kiekie, this universe was created just to remind you how deeply you are loved.";
 let i=0;
-
-function startTyping(){
+function typing(){
 let speed=40;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
+(function type(){
+if(i<message.length){
+document.getElementById("typing").innerHTML+=message.charAt(i);
 i++;
 setTimeout(type,speed);
 }
+})();
 }
-type();
+
+/* CHAT SYSTEM */
+const chats=[
+["her","Hey ❤️"],
+["me","I was just thinking about you."],
+["her","Really?"],
+["me","Always."],
+["me","You make life softer."],
+["her","That’s sweet 🥺"],
+["me","Always and forever, it's you."]
+];
+
+let c=0;
+
+function nextChat(){
+if(c<chats.length){
+let div=document.createElement("div");
+div.className="msg "+chats[c][0];
+div.innerText=chats[c][1];
+document.getElementById("chat").appendChild(div);
+c++;
+hearts();
+}
+}
+
+/* LETTER */
+function showLetter(){
+document.getElementById("letter").style.display="block";
+hearts();
 }
 
 /* HEARTS */
-function createHearts(){
-for(let i=0;i<20;i++){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+10)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),4000);
+function hearts(){
+for(let i=0;i<15;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
 }
 }
 
-/* REASONS */
-const reasons=[
-"Your kindness makes everything better.",
-"You understand me in ways nobody else does.",
-"You bring calm to my chaos.",
-"Your smile changes my whole day.",
-"You are my safe place.",
-"I admire your strength and heart."
-];
-
-let r=0;
-
-function nextReason(){
-document.getElementById("reason").innerText=reasons[r];
-r=(r+1)%reasons.length;
-createHearts();
+/* PROMISE */
+function promise(){
+document.getElementById("promiseText").innerText=
+"I promise to keep choosing you, supporting you, and loving you — always and forever ❤️";
+hearts();
 }
 
-/* COUNTDOWN (change date to when relationship started) */
-const startDate=new Date("2024-01-01");
-
-function updateCounter(){
+/* COUNTER */
+const start=new Date("2024-01-01");
+setInterval(()=>{
 let now=new Date();
-let diff=now-startDate;
+let days=Math.floor((now-start)/(1000*60*60*24));
+document.getElementById("timeTogether").innerText=
+"We've shared "+days+" beautiful days together.";
+},1000);
 
-let days=Math.floor(diff/(1000*60*60*24));
-document.getElementById("counter").innerText=
-"We have shared "+days+" beautiful days together ❤️";
+/* STARS BACKGROUND */
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<150;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2
+});
 }
 
-setInterval(updateCounter,1000);
-updateCounter();
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(drawStars);
+}
+drawStars();
 
 </script>
 
